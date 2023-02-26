@@ -1,0 +1,33 @@
+.cat-dropdown-list {
+  min-width: 90px;
+  padding: 4px;
+  background-color: #fff;
+}
+
+.cat-dropdown-item {
+  line-height: 22px;
+  padding: 4px;
+  border-radius: 3px;
+}
+
+.cat-dropdown-item:hover {
+  background-color: #eee;
+  cursor: pointer;
+}
+
+.cat-dropdown-disable {
+  color: var(--gray);
+}
+
+.cat-dropdown-disable:hover {
+  cursor: not-allowed;
+}
+
+.cat-dropdown-danger {
+  color: var(--red);
+}
+
+.cat-dropdown-danger:hover {
+  color: #fff;
+  background-color: var(--red);
+}

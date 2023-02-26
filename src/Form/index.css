@@ -1,0 +1,26 @@
+.cat-form {
+  background-color: gainsboro;
+  
+}
+
+.cat-form-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 28px;
+}
+.cat-form-label {
+  text-align: right;
+  flex: 8;
+  padding: 0 12px;
+}
+.cat-form-right {
+  flex: 16;
+  position: relative;
+}
+.cat-form-right::after {
+  content: attr(data-err);
+  color: var(--red);
+  position: absolute;
+  top: 110%;
+  left: 0;
+}

@@ -1,0 +1,86 @@
+.cat-calendar {
+  width: 300px;
+  border-radius: 9px;
+  user-select: none;
+  cursor: pointer;
+}
+
+.cat-calendar-head {
+  height: 30px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.cat-calendar-head .icon {
+  cursor: pointer;
+}
+
+.cat-calendar-head i {
+  width: 50%;
+  text-align: center;
+}
+
+.cat-calendar-days {
+  height: 256px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.cat-calendar-day,
+.cat-calendar-week {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cat-calendar-week {
+  font-weight: bolder;
+}
+
+.cat-calendar-day span {
+  color: var(--gray);
+  box-sizing: border-box;
+  width: 26px;
+  height: 26px;
+  border-radius: 3px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cat-calendar-day span:hover {
+  background-color: #eee;
+}
+
+.cat-calendar-cur-month span {
+  color: #333;
+}
+
+.cat-calendar-today span {
+  border: 1px solid var(--blue);
+  color: var(--blue);
+}
+
+.cat-calendar-select span {
+  background-color: var(--blue);
+  color: #fff;
+}
+
+
+.cat-calendar-select span:hover {
+  background-color: var(--blue);
+}
+
+.cat-calendar-disabled span {
+  background-color: var(--gray);
+  color: #333;
+}
+
+.cat-calendar-disabled span:hover {
+  background-color: var(--gray);
+  cursor: not-allowed;
+}
