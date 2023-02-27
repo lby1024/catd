@@ -54,6 +54,7 @@
     "classnames": "^2.3.2",
     "react": ">=16.9.0",
     "react-dom": ">=16.9.0",
+    "@types/react-dom": "^18.0.11",
     "styled-components": "^5.3.6"
   },
   "devDependencies": {
@@ -80,7 +81,5 @@
     "styled-components": "^5.3.6",
     "stylelint": "^14.9.1"
   },
-  "dependencies": {
-    "@types/react-dom": "^18.0.11"
-  }
+  "dependencies": {}
 }
