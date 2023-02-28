@@ -1,8 +1,9 @@
-import {Button, UploadFile} from '../index';
-import { ChangeEvent, FC, useRef } from 'react';
+import { UploadFile} from '../index';
+import { FC, ReactNode, useRef } from 'react';
 import { useFiles } from './tool';
 import { AxiosProgressEvent } from 'axios';
 import UploaderList from './uploaderList';
+import UploadDragger from './UploadDrag';
 import './index.css'
 
 
@@ -17,6 +18,12 @@ interface UploaderProps {
    * @type object[]
    */
   defaultFiles?: UploadFile[]
+  /**
+   * @description 是否支持拖拽上传
+   * @type boolean
+   * @default false
+   */
+  drag?: boolean
   /**
    * @description 上传进度发生改变时的回调
    */
@@ -41,12 +48,15 @@ interface UploaderProps {
    * 删除文件时触发
    */
   onRemove?: (file: UploadFile) => void
+  children?: ReactNode
 }
 
 const Uploader: FC<UploaderProps> = (props) => {
   const {
     action,
     defaultFiles,
+    drag,
+    children,
     onRemove,
     onProgress,
     onSuccess,
@@ -105,7 +115,7 @@ const Uploader: FC<UploaderProps> = (props) => {
       }, 300)
     })
   }
-  /**
+  /** 
    * 上传文件前, 检查文件, 转换文件
    * beforeUpload return false时: 文件不合格不能上传
    * beforeUpload return Promise时: 对文件进行了转换
@@ -125,8 +135,7 @@ const Uploader: FC<UploaderProps> = (props) => {
   /**
    * 选种文件后触发
    * */ 
-  function chooseFile(e: ChangeEvent<HTMLInputElement>) {
-    const files = e.target.files
+  function uploadFiles(files: FileList|null) {
     if (!files) return
     let postFiles = Array.from(files)
     postFiles.forEach(file => checkFile(file))
@@ -139,14 +148,18 @@ const Uploader: FC<UploaderProps> = (props) => {
     files.delet(file)
   }
 
+  const Trigger = <div onClick={clickUploadBtn} >
+    {drag ? <UploadDragger onFile={uploadFiles}>{children}</UploadDragger> : children}
+  </div>
+
   return (
     <div className='cat-uploader' >
-      <Button btnType='primary' onClick={clickUploadBtn} >upload file</Button>
+      {Trigger}
       <input
         className='cat-upload-input'
         style={{display: 'none'}}
         ref={refInput}
-        onChange={chooseFile}
+        onChange={(e) => uploadFiles(e.target.files)}
         type='file'
       />
       <UploaderList fileList={files.list} onRemove={onRemoveFile} />

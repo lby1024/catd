@@ -9,9 +9,7 @@ export default () => {
   const [v, setV] = useState('1')
 
   return (<>
-
-    <div onClick={() => setV('3')} >ccc</div>
-    <Radio.Group value={v}>
+    <Radio.Group value={v} onChange={v => setV(v)} >
       <Radio.Item value="1">A</Radio.Item>
       <Radio.Item value="2">B</Radio.Item>
       <Radio.Item value="3">C</Radio.Item>

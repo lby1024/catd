@@ -60,6 +60,19 @@
   color: gray;
 }
 
+.cat-upload-drag {
+  border: 2px dashed var(--gray);
+  border-radius: 9px;
+  background-color: #f8f8f8;
+  text-align: center;
+  line-height: 24px;
+  padding: 24px 0;
+}
+
+.cat-uploader-over {
+  border: 3px dashed var(--blue);
+}
+
 .cat-hide {
   animation: hide 1.5s forwards;
 }

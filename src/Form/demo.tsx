@@ -33,7 +33,7 @@ export default () => {
         <Input placeholder="password" />
       </Form.Item>
       <Form.Item name="repassword" label="重复密码" rules={rules.repassword}>
-        <Input />
+        <Input placeholder='repeat' />
       </Form.Item>
       <Form.Item>
         <Button>提交</Button>

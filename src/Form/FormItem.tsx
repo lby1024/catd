@@ -1,9 +1,9 @@
 import classNames from 'classnames';
 import React, { FC, ReactElement, useContext } from 'react';
 import { useMounted } from '../tools/hooks';
-import './index.css';
 import { FormContext } from './useForm';
 import { FormItemRule } from './valitate';
+import './index.css';
 
 interface FormItemProps {
   className?: string;
@@ -35,9 +35,15 @@ const FormItem: FC<FormItemProps> = (props) => {
     formApi.regist(name, rules);
   });
 
+  function getValue(e: any) {
+    if ('value' in e.target) {
+      return e.target.value
+    }
+    return e
+  }
 
   function onChange(e: any) {
-    const value = e?.target?.value ? e.target.value : e
+    let value = getValue(e)
     const valuse = formApi.setValue(name, value);
     if (trigger === 'onChange') {
       formApi.validateItem(name, valuse);

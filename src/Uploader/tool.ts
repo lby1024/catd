@@ -31,7 +31,7 @@ export const useFiles = (defaultList: UploadFile[]) => {
       percent: 0,
       raw: fileRaw
     }
-    setFiles([file, ...files])
+    setFiles(files => [file, ...files])
     return file
   }
 
