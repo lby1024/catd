@@ -1,40 +1,16 @@
-# catd
 
-[![NPM version](https://img.shields.io/npm/v/catd.svg?style=flat)](https://npmjs.org/package/catd)
-[![NPM downloads](http://img.shields.io/npm/dm/catd.svg?style=flat)](https://npmjs.org/package/catd)
+### 安装
 
-A react library developed with dumi
-
-## Usage
-
-TODO
-
-## Options
-
-TODO
-
-## Development
-
-```bash
-# install dependencies
-$ pnpm install
-
-# develop library by docs demo
-$ pnpm start
-
-# build library source code
-$ pnpm run build
-
-# build library source code in watch mode
-$ pnpm run build:watch
-
-# build docs
-$ pnpm run docs:build
-
-# check your project for potential problems
-$ pnpm run doctor
+```
+npm install catd --save
 ```
 
-## LICENSE
+### 示例
 
-MIT
+```ts
+import { Icon } from 'catd';
+
+export const App = () => <Icon name="add" size="30" />;
+```
+
+### [查看文档](https://lby1024.gitee.io/cat-design)
