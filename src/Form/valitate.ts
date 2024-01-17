@@ -29,7 +29,7 @@ export type FormItemRule = {
   max?: number;
   min?: number;
   type?: any;
-  validator?: Function;
+  validator?: (value: any, values: any) => Promise<string>;
   msg?: string;
 };
 
