@@ -19,7 +19,9 @@ export function useClickOut(refs: RefObject<any>[], hide: () => any) {
     return () => document.removeEventListener('click', fn);
   }, []);
 }
-
+/**
+ * @props: Overlay组件的所有属性
+ */
 function getPlacement(props: OverlayProps, overLayNode: HTMLElement): CSSProperties {
   const { btnRef, placement, space = 0 } = props;
   if (!btnRef.current) {

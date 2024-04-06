@@ -1,6 +1,7 @@
 import './static/base.css';
 // import './static/normalise.css';
 import './static/reset.css';
+import VirtualList from './virtualList';
 
 export * from './interface';
 export { default as Radio } from './Radio';
@@ -21,3 +22,4 @@ export { default as Select } from './Select';
 export { default as Calendar } from './Calendar';
 export { default as Uploader } from './Uploader';
 export { default as Progress } from './Progress';
+export { default as VirtualList } from './virtualList'

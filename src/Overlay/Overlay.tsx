@@ -42,7 +42,7 @@ const Overlay: FC<OverlayProps> = (props) => {
       <Show duration={duration} show={visible} style={style} ref={overLayCb} >
         {children}
       </Show>
-
+    // 直接将原始挂载到 document.body下面
     return ReactDom.createPortal(
       Content,
       document.body,

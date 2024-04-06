@@ -1,6 +1,6 @@
 export interface UploadFile {
-  uid: string;
-  name: string;
+  uid: string;    //uid: `file-${new Date().getTime()}`,
+  name: string;   // name: fileRaw.name,
   status: 'ready' | 'uploading' | 'success' | 'error'; // ready 等待上传
   percent?: number;
   raw?: File; // 源文件
@@ -37,9 +37,6 @@ export type CalendarDate = {
   date: Date,
   key: number,
   disabled: boolean, // 是否可选择
-  flag: 'cur' | 'prev' | 'next', 
+  flag: 'cur' | 'prev' | 'next',
   today: boolean, // 是否是今天
 }
-
-
-

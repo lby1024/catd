@@ -40,7 +40,7 @@ const Icon: FC<IconProps> = (props) => {
   return (
     <svg
       className={clas}
-      aria-hidden="true"
+      aria-hidden="true" // 无障碍相关: 图标属于装饰性类容,不需要读出来
       {...others}
       style={style}
       onMouseEnter={onMouseEnter}
