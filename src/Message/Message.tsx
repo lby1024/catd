@@ -1,10 +1,11 @@
 import { render } from 'react-dom';
-import MessageList from './MessageList';
+import Alert from '../Alert';
+import './index.css'
 
 let msgListRoot: HTMLElement;
 
 export interface MsgProps {
-  msg: string;
+  message: string;
   type: 'success' | 'warning' | 'error' | 'info';
   duration?: number;
 }
@@ -12,20 +13,23 @@ export interface MsgProps {
 const addMsg = (props: MsgProps) => {
   if (!msgListRoot) {
     msgListRoot = document.createElement('div');
+    msgListRoot.className = 'cat-message-list'
     document.body.append(msgListRoot);
-    render(<MessageList />, msgListRoot);
   }
+  const item = document.createElement('div');
+  item.className = 'cat-msg-item'
+  item.setAttribute('style', `animation: showHide ${props.duration || 3}s linear forwards;`)
+  msgListRoot.append(item);
+  render(<Alert {...props} />, item);
 
-  MessageList.add({
-    ...props,
-    duration: props.duration || 3000,
-    time: new Date().getTime(),
-  });
+  item.addEventListener('animationend', () => {
+    item.remove()
+  })
 };
 
 export default {
-  success: (msg: string) => addMsg({ type: 'success', msg }),
-  error: (msg: string) => addMsg({ type: 'error', msg }),
-  info: (msg: string) => addMsg({ type: 'info', msg }),
-  warning: (msg: string) => addMsg({ type: 'warning', msg }),
+  success: (message: string) => addMsg({ type: 'success', message }),
+  error: (message: string) => addMsg({ type: 'error', message }),
+  info: (message: string) => addMsg({ type: 'info', message }),
+  warning: (message: string) => addMsg({ type: 'warning', message }),
 };
