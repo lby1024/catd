@@ -1,28 +1,28 @@
 import { DropItem } from "catd/interface"
-import { CSSProperties } from "react"
-import Select from "./Select"
+import React, { CSSProperties } from "react"
+import { Select } from "catd"
 
 const options: DropItem[] = [
   {
     key: 'jack',
     label: 'Jack',
     value: 'jack'
-  }, 
+  },
   {
     key: 'lucy',
     label: 'Lucy',
     value: 'lucy'
-  }, 
+  },
   {
     key: 'tom',
     label: 'Tom',
     value: 'tom'
-  }, 
+  },
   {
     key: 'tony',
     label: 'Tony',
     value: 'tony'
-  }, 
+  },
 ]
 export default () => {
 

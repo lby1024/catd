@@ -7,18 +7,20 @@ export default () => {
 
   return (
     <VirtualList
-      list={list}
-      height={300}
+      data={list}
+      height={200}
       itemHeight={62}
       renderItem={(item) => <Card>{item}</Card>}
-      count={7}
+      limit={7}
     />
   )
 }
 
 const Card = styled.div`
   height: 30px;
-  border: 1px solid #ccc;
+  background: #f7f9fb;
+  color: #999;
   padding: 10px;
   margin-bottom: 10px;
+  border-radius: 6px;
 `

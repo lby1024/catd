@@ -65,16 +65,16 @@ const list = [
   { name: 'icon-mianxing_fuzhi_gaojing' },
   { name: 'icon-mianxing_fuzhi_xiaoxi' },
   { name: 'jiantou_liebiaoxiangyou' },
-  { name: 'jiantou_liebiaoxiangzuo'},
-  { name: 'jiantou_yemian_xiangyou'},
-  { name: 'jiantou_yemian_xiangzuo'},
-  { name: 'file'},
+  { name: 'jiantou_liebiaoxiangzuo' },
+  { name: 'jiantou_yemian_xiangyou' },
+  { name: 'jiantou_yemian_xiangzuo' },
+  { name: 'file' },
 ];
 
 const App: FC = () => {
   function copy(name: string) {
-    navigator.clipboard.writeText(name);
     Message.success(`复制成功:${name} 🎊`);
+    navigator.clipboard.writeText(name);
   }
 
   return (

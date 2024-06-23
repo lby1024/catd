@@ -20,7 +20,6 @@
     }
   },
   "include": [
-    ".dumi/**/*",
     ".dumirc.ts",
     "src/**/*"
   ]
