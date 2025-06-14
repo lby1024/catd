@@ -1,0 +1,38 @@
+"use strict";(self.webpackChunkcatd=self.webpackChunkcatd||[]).push([[3636],{47856:function(n,t,a){a.r(t);var s=a(23386),x=a(93546),o=a(2694),i=a(15334),v=a(15379),I=a(88255),l=a(31249),p=a(76405),d=a(47129),u=a(30321),r=a(75271),_=a(66830),e=a(52676);function c(){return(0,e.jsx)(d.dY,{children:(0,e.jsx)(r.Suspense,{fallback:(0,e.jsx)(u.Z,{}),children:(0,e.jsxs)(e.Fragment,{children:[(0,e.jsxs)("div",{className:"markdown",children:[(0,e.jsxs)("h1",{id:"input",children:[(0,e.jsx)("a",{"aria-hidden":"true",tabIndex:"-1",href:"#input",children:(0,e.jsx)("span",{className:"icon icon-link"})}),"Input"]}),(0,e.jsxs)("h3",{id:"\u57FA\u672C\u4F7F\u7528",children:[(0,e.jsx)("a",{"aria-hidden":"true",tabIndex:"-1",href:"#\u57FA\u672C\u4F7F\u7528",children:(0,e.jsx)("span",{className:"icon icon-link"})}),"\u57FA\u672C\u4F7F\u7528"]})]}),(0,e.jsx)(d.Dl,{demo:{id:"src-input-demo-demo"},previewerProps:{desc:"\u57FA\u672C\u4F7F\u7528",filename:"src/Input/demo.tsx"}}),(0,e.jsx)("div",{className:"markdown",children:(0,e.jsxs)("h3",{id:"\u6807\u7B7E",children:[(0,e.jsx)("a",{"aria-hidden":"true",tabIndex:"-1",href:"#\u6807\u7B7E",children:(0,e.jsx)("span",{className:"icon icon-link"})}),"\u6807\u7B7E"]})}),(0,e.jsx)(d.Dl,{demo:{id:"src-input-demo-demo02"},previewerProps:{desc:"\u7528\u4E8E\u914D\u7F6E\u4E00\u4E9B\u56FA\u5B9A\u7EC4\u5408\u3002",filename:"src/Input/demo02.tsx"}}),(0,e.jsx)("div",{className:"markdown",children:(0,e.jsxs)("h3",{id:"\u4E09\u79CD\u5927\u5C0F",children:[(0,e.jsx)("a",{"aria-hidden":"true",tabIndex:"-1",href:"#\u4E09\u79CD\u5927\u5C0F",children:(0,e.jsx)("span",{className:"icon icon-link"})}),"\u4E09\u79CD\u5927\u5C0F"]})}),(0,e.jsx)(d.Dl,{demo:{id:"src-input-demo-demo03"},previewerProps:{desc:"\u6211\u4E3A Input \u8F93\u5165\u6846\u5B9A\u4E49\u4E86\u4E09\u79CD\u5C3A\u5BF8\uFF08\u5927\u3001\u9ED8\u8BA4\u3001\u5C0F\uFF09\uFF0C\u9AD8\u5EA6\u5206\u522B\u4E3A 40px\u300132px \u548C 24px\u3002",filename:"src/Input/demo03.tsx"}}),(0,e.jsxs)("div",{className:"markdown",children:[(0,e.jsxs)("h3",{id:"api",children:[(0,e.jsx)("a",{"aria-hidden":"true",tabIndex:"-1",href:"#api",children:(0,e.jsx)("span",{className:"icon icon-link"})}),"Api"]}),_.texts[0].value,(0,e.jsxs)(l.Z,{children:[_.texts[1].value,(0,e.jsxs)("tbody",{children:[(0,e.jsxs)("tr",{children:[_.texts[2].value,(0,e.jsx)("th",{children:_.texts[3].value}),_.texts[4].value,(0,e.jsx)("th",{children:_.texts[5].value}),_.texts[6].value,(0,e.jsx)("th",{children:_.texts[7].value}),_.texts[8].value,(0,e.jsx)("th",{children:_.texts[9].value}),_.texts[10].value]}),(0,e.jsxs)("tr",{children:[_.texts[11].value,(0,e.jsx)("td",{children:_.texts[12].value}),_.texts[13].value,(0,e.jsx)("td",{children:_.texts[14].value}),_.texts[15].value,(0,e.jsx)("td",{children:_.texts[16].value}),_.texts[17].value,(0,e.jsx)("td",{children:_.texts[18].value}),_.texts[19].value]}),(0,e.jsxs)("tr",{children:[_.texts[20].value,(0,e.jsx)("td",{children:_.texts[21].value}),_.texts[22].value,(0,e.jsx)("td",{children:_.texts[23].value}),_.texts[24].value,(0,e.jsx)("td",{children:_.texts[25].value}),_.texts[26].value,(0,e.jsx)("td",{}),_.texts[27].value]}),(0,e.jsxs)("tr",{children:[_.texts[28].value,(0,e.jsx)("td",{children:_.texts[29].value}),_.texts[30].value,(0,e.jsx)("td",{children:_.texts[31].value}),_.texts[32].value,(0,e.jsx)("td",{children:_.texts[33].value}),_.texts[34].value,(0,e.jsx)("td",{}),_.texts[35].value]}),(0,e.jsxs)("tr",{children:[_.texts[36].value,(0,e.jsx)("td",{children:_.texts[37].value}),_.texts[38].value,(0,e.jsx)("td",{children:_.texts[39].value}),_.texts[40].value,(0,e.jsx)("td",{children:_.texts[41].value}),_.texts[42].value,(0,e.jsx)("td",{}),_.texts[43].value]}),(0,e.jsxs)("tr",{children:[_.texts[44].value,(0,e.jsx)("td",{children:_.texts[45].value}),_.texts[46].value,(0,e.jsx)("td",{children:_.texts[47].value}),_.texts[48].value,(0,e.jsx)("td",{children:_.texts[49].value}),_.texts[50].value,(0,e.jsx)("td",{}),_.texts[51].value]})]})]})]})]})})})}t.default=c},66830:function(n,t,a){a.r(t),a.d(t,{texts:function(){return s}});const s=[{value:`
+
+  
+  
+  
+  
+  `,paraId:0},{value:`
+  `,paraId:1,tocIndex:4},{value:`
+    `,paraId:1,tocIndex:4},{value:"\u5C5E\u6027\u540D",paraId:1,tocIndex:4},{value:`
+    `,paraId:1,tocIndex:4},{value:"\u63CF\u8FF0",paraId:1,tocIndex:4},{value:`
+    `,paraId:1,tocIndex:4},{value:"\u7C7B\u578B",paraId:1,tocIndex:4},{value:`
+    `,paraId:1,tocIndex:4},{value:"\u9ED8\u8BA4\u503C",paraId:1,tocIndex:4},{value:`
+  `,paraId:1,tocIndex:4},{value:`
+    `,paraId:1,tocIndex:4},{value:"size",paraId:1,tocIndex:4},{value:`
+    `,paraId:1,tocIndex:4},{value:"\u5927\u5C0F",paraId:1,tocIndex:4},{value:`
+    `,paraId:1,tocIndex:4},{value:"'large' | 'small' | 'default'",paraId:1,tocIndex:4},{value:`
+    `,paraId:1,tocIndex:4},{value:"default",paraId:1,tocIndex:4},{value:`
+  `,paraId:1,tocIndex:4},{value:`
+    `,paraId:1,tocIndex:4},{value:"addOnBefore",paraId:1,tocIndex:4},{value:`
+    `,paraId:1,tocIndex:4},{value:"\u5C3A\u5BF8\u5E26\u6807\u7B7E\u7684 input\uFF0C\u8BBE\u7F6E\u524D\u7F6E\u6807\u7B7E",paraId:1,tocIndex:4},{value:`
+    `,paraId:1,tocIndex:4},{value:"string | ReactElement",paraId:1,tocIndex:4},{value:`
+    `,paraId:1,tocIndex:4},{value:`
+  `,paraId:1,tocIndex:4},{value:`
+    `,paraId:1,tocIndex:4},{value:"addOnAfter",paraId:1,tocIndex:4},{value:`
+    `,paraId:1,tocIndex:4},{value:"\u5C3A\u5BF8\u5E26\u6807\u7B7E\u7684 input\uFF0C\u8BBE\u7F6E\u540E\u7F6E\u6807\u7B7E",paraId:1,tocIndex:4},{value:`
+    `,paraId:1,tocIndex:4},{value:"string | ReactElement",paraId:1,tocIndex:4},{value:`
+    `,paraId:1,tocIndex:4},{value:`
+  `,paraId:1,tocIndex:4},{value:`
+    `,paraId:1,tocIndex:4},{value:"prefix",paraId:1,tocIndex:4},{value:`
+    `,paraId:1,tocIndex:4},{value:"\u5E26\u6709\u524D\u7F00\u56FE\u6807\u7684 input",paraId:1,tocIndex:4},{value:`
+    `,paraId:1,tocIndex:4},{value:"string | ReactElement",paraId:1,tocIndex:4},{value:`
+    `,paraId:1,tocIndex:4},{value:`
+  `,paraId:1,tocIndex:4},{value:`
+    `,paraId:1,tocIndex:4},{value:"suffix",paraId:1,tocIndex:4},{value:`
+    `,paraId:1,tocIndex:4},{value:"\u5E26\u6709\u540E\u7F00\u56FE\u6807\u7684 input",paraId:1,tocIndex:4},{value:`
+    `,paraId:1,tocIndex:4},{value:"string | ReactElement",paraId:1,tocIndex:4},{value:`
+    `,paraId:1,tocIndex:4},{value:`
+  `,paraId:1,tocIndex:4}]}}]);
