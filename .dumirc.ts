@@ -3,10 +3,10 @@ import { defineConfig } from 'dumi';
 export default defineConfig({
   outputPath: 'docs-dist',
   // favicons: ['./cat1.png'],
-  // base: '/cat-design',
-  // publicPath: '/cat-design/',
+  base: '/catd',
+  publicPath: '/catd/',
   // base: '/',
-  // publicPath: '/cat-design/',
+  // publicPath: '/catd/',
   apiParser: {},
   resolve: {
     entryFile: './src/index.ts'
