@@ -1,4 +1,4 @@
-import { FC, useEffect, useMemo, useRef, useState } from 'react'
+import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 import { Fn, Item } from './type'
 import { useDebounce, useTouchEnd, getMoreItems, getIndex } from './tools'
 
@@ -54,7 +54,9 @@ const List: FC<ListProps> = (props) => {
     setCur(index)
   }
 
-  const CList = renderList.map((info, i) => <div key={i}>{props.renderItem(info)}</div>)
+  const CList = renderList.map((info, i) => (
+    <div key={i}>{props.renderItem(info)}</div>
+  ))
 
   return (
     <div onScroll={onScroll} style={{ height, overflow: 'auto' }} className={props.className} >
