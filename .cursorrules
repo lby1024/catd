@@ -1,0 +1,4 @@
+Always respond in Simplified Chinese for this repository.
+When generating commit messages, use Conventional Commits with English types and Chinese descriptions.
+Use types like: feat, fix, docs, style, refactor, perf, test, build, ci, chore, revert.
+Format: <type>: <中文简要说明>
