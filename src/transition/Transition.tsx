@@ -1,16 +1,18 @@
-import { FC, useEffect, useState } from "react";
-import { useTime, useWatch } from "./hooks";
-import { nullFn } from "./utils";
+import { FC, useEffect, useRef, useState } from 'react';
+import { useTime, useWatch } from './hooks';
+import { ClassNames } from './types';
+import { nullFn } from './utils';
 
-type CSSCallback = () => any;
+type CSSCallback = (names: Required<ClassNames>) => any;
 type UpdateCallback = (run: RunTask, props: TransitionProps) => any;
-type RunTask = (type: "appear" | "enter" | "exit") => Promise<any>;
+type RunTask = (type: 'appear' | 'enter' | 'exit') => Promise<any>;
 
 export type TransitionProps = {
   data: any;
   duration: number;
   children?: any;
   appear?: boolean;
+  className?: string | ClassNames;
   onEnter?: CSSCallback;
   onEnterActive?: CSSCallback;
   onEnterDone?: CSSCallback;
@@ -38,6 +40,7 @@ export const Transition: FC<TransitionProps> = (props) => {
   const [value, setValue] = useState(data);
   const getChild = children;
   const [updateTime, same] = useTime();
+  const classNames = useClassNames(props);
 
   let tasks = {
     appear: [props.onAppear, props.onAppearActive, props.onAppearDone],
@@ -55,13 +58,14 @@ export const Transition: FC<TransitionProps> = (props) => {
       const [onWill = nullFn, onActive = nullFn, onDone = nullFn] = tasks[type];
       const { duration } = props;
       const time = updateTime();
+      const names = classNames.current;
 
-      onWill(); // 第一阶段: class="enter"
+      onWill(names); // 第一阶段: class="enter"
       void document.body.offsetHeight; // 触发回流(不能在同一帧修改css, 否则动画不生效)
-      onActive(); // 第二阶段: class="enter enter-active"
+      onActive(names); // 第二阶段: class="enter enter-active"
       setTimeout(() => {
         if (same(time) === false) return;
-        onDone();
+        onDone(names); // 第三阶段: class="enter-done"
         resolve(true);
       }, duration);
     });
@@ -81,8 +85,61 @@ export const Transition: FC<TransitionProps> = (props) => {
       });
     },
     [data],
-    false // false表示:页面加载完成后不会自动执行callback
+    false, // false表示:页面加载完成后不会自动执行callback
   );
 
   return <>{getChild(value)}</>;
 };
+
+function useClassNames(props: TransitionProps) {
+  const { className } = props;
+
+  const classNames = useRef<Required<ClassNames>>({
+    // enter
+    ['enter']: 'enter',
+    ['enter-active']: 'enter-active',
+    ['enter-done']: 'enter-done',
+    // exit
+    ['exit']: 'exit',
+    ['exit-active']: 'exit-active',
+    ['exit-done']: 'exit-done',
+    // appear
+    ['appear']: 'appear',
+    ['appear-active']: 'appear-active',
+    ['appear-done']: 'appear-done',
+  });
+
+  useEffect(() => {
+    if (!className) {
+      return;
+    }
+
+    if (typeof className === 'string') {
+      addPreFix(className);
+    } else {
+      upDateClassNames(className);
+    }
+  }, [className]);
+
+  function addPreFix(prefix: string) {
+    const names = classNames.current;
+    const keys = Object.keys(names) as Array<keyof typeof names>;
+    keys.forEach((key) => {
+      const name = names[key];
+      classNames.current[key] = `${prefix}-${name}`;
+    });
+  }
+
+  function upDateClassNames(className: ClassNames) {
+    const names = className;
+    const keys = Object.keys(names) as Array<keyof typeof names>;
+    keys.forEach((key) => {
+      const name = names[key];
+      if (name) {
+        classNames.current[key] = name;
+      }
+    });
+  }
+
+  return classNames;
+}

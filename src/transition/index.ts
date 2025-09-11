@@ -1,13 +1,14 @@
 import { CSSTransition } from './CSSTransition';
 import { SwitchTransition } from './SwitchTransition';
 
-type CSSTransitionProps = typeof CSSTransition;
-
-interface TransitonProps extends CSSTransitionProps {
+type TransitonProps = {
   Switch: typeof SwitchTransition;
-}
+  CSS: typeof CSSTransition;
+};
 
-const Transiton = CSSTransition as TransitonProps;
-Transiton.Switch = SwitchTransition;
+const Transiton: TransitonProps = {
+  Switch: SwitchTransition,
+  CSS: CSSTransition,
+};
 
 export default Transiton;

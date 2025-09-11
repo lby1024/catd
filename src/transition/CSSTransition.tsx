@@ -14,47 +14,54 @@ export const CSSTransition: FC<CssTransitionProps> = (props) => {
   const transitionProps: TransitionProps = {
     ...props,
     data: show,
-    onAppear() {
+    onAppear(names) {
       const node = child.ref?.current;
-      clear(node);
-      node?.classList.add('appear');
+      clear(names, node);
+      node?.classList.add(names['appear']); // appear="appear" or "test-appear" or "fadeOutLeft"
     },
-    onAppearActive() {
+    onAppearActive(names) {
       const node = child.ref?.current;
-      node?.classList.add('appear-active');
+      const name = names['appear-active'];
+      node?.classList.add(name); // // name="appear-active" or "test-appear-active" or "fadeOutLeft"
     },
-    onAppearDone() {
+    onAppearDone(names) {
       const node = child.ref?.current;
-      clear(node);
-      node?.classList.add('appear-done');
+      clear(names, node);
+      const name = names['appear-done'];
+      node?.classList.add(name);
     },
-    onEnter() {
+    onEnter(names) {
       const node = child.ref?.current;
-      clear(node);
-      node?.classList.add('enter');
+      clear(names, node);
+      node?.classList.add(names['enter']);
     },
-    onEnterActive() {
+    onEnterActive(names) {
       const node = child.ref?.current;
-      node?.classList.add('enter-active');
+      const name = names['enter-active'];
+      node?.classList.add(name);
     },
-    onEnterDone() {
+    onEnterDone(names) {
       const node = child.ref?.current;
-      clear(node);
-      node?.classList.add('enter-done');
+      clear(names, node);
+      const name = names['enter-done'];
+      node?.classList.add(name);
     },
-    onExit() {
+    onExit(names) {
       const node = child.ref?.current;
-      clear(node);
-      node?.classList.add('exit');
+      clear(names, node);
+      const name = names['exit'];
+      node?.classList.add(name);
     },
-    onExitActive() {
+    onExitActive(names) {
       const node = child.ref?.current;
-      node?.classList.add('exit-active');
+      const name = names['exit-active'];
+      node?.classList.add(name);
     },
-    onExitDone() {
+    onExitDone(names) {
       const node = child.ref?.current;
-      clear(node);
-      node?.classList.add('exit-done');
+      clear(names, node);
+      const name = names['exit-done'];
+      node?.classList.add(name);
     },
     /**
      * 加载时执行动画
@@ -83,6 +90,7 @@ export const CSSTransition: FC<CssTransitionProps> = (props) => {
      * 淡入
      */
     onShow(runTasks) {
+      console.log(show, 111111111);
       show === true && runTasks('enter');
     },
   };

@@ -1,10 +1,11 @@
-import { FC, useEffect, useMemo, useState } from "react";
-import { Transition, TransitionProps } from "./Transition";
-import { useChild, useNode, useTime } from "./hooks";
-import { clear, getNode } from "./utils";
-import { CSSTransition } from "./CssTransition";
+import { FC } from 'react';
+import styled from 'styled-components';
+import { CSSTransition } from './CSSTransition';
+import { useNode } from './hooks';
+import { Transition, TransitionProps } from './Transition';
+import { clear, getNode } from './utils';
 
-type SwitchTransitionProps = Omit<TransitionProps, "data"> & {
+type SwitchTransitionProps = Omit<TransitionProps, 'data'> & {
   show: boolean;
   inTurn?: boolean;
 };
@@ -23,59 +24,64 @@ const SwitchTransitionInturn: FC<SwitchTransitionProps> = (props) => {
     ...props,
     data: show,
     // appear
-    onAppear() {
+    onAppear(names) {
       const node = show ? getNode(itemShow) : getNode(itemHide);
-      clear(node);
-      node?.classList.add("appear");
+      clear(names, node);
+      node?.classList.add(names['appear']);
     },
-    onAppearActive() {
+    onAppearActive(names) {
       const node = show ? getNode(itemShow) : getNode(itemHide);
-      node?.classList.add("appear-active");
+      node?.classList.add(names['appear-active']);
     },
-    onAppearDone() {
+    onAppearDone(names) {
       const node = show ? getNode(itemShow) : getNode(itemHide);
-      clear(node);
-      node?.classList.add("appear-done");
+      clear(names, node);
+      node?.classList.add(names['appear-done']);
     },
     // exit
-    onExit() {
+    onExit(names) {
       const node = show ? getNode(itemHide) : getNode(itemShow);
-      clear(node);
-      node?.classList.add("exit");
+      clear(names, node);
+      node?.classList.add(names['exit']);
+      console.log(names['exit'], '------exit');
     },
-    onExitActive() {
+    onExitActive(names) {
       const node = show ? getNode(itemHide) : getNode(itemShow);
-      node?.classList.add("exit-active");
+      node?.classList.add(names['exit-active']);
+      console.log(names['exit-active'], '--------exit-active');
     },
-    onExitDone() {
+    onExitDone(names) {
       const node = show ? getNode(itemHide) : getNode(itemShow);
-      clear(node);
-      node?.classList.add("exit-done");
+      clear(names, node);
+      node?.classList.add(names['exit-done']);
+      console.log(names['exit-done'], '------exit-done');
     },
     // enter
-    onEnter() {
+    onEnter(names) {
       const node = show ? getNode(itemShow) : getNode(itemHide);
-      console.log(node, 111111111);
-      clear(node);
-      node?.classList.add("enter");
+      clear(names, node);
+      node?.classList.add(names['enter']);
+      console.log(names['enter'], '--------enter');
     },
-    onEnterActive() {
+    onEnterActive(names) {
       const node = show ? getNode(itemShow) : getNode(itemHide);
-      node?.classList.add("enter-active");
+      node?.classList.add(names['enter-active']);
+      console.log(names['enter-active'], '-------enter-active');
     },
-    onEnterDone() {
+    onEnterDone(names) {
       const node = show ? getNode(itemShow) : getNode(itemHide);
-      clear(node);
-      node?.classList.add("enter-done");
+      clear(names, node);
+      node?.classList.add(names['enter-done']);
+      console.log(names['enter-active'], '--------enter-done');
     },
     onMounted(runTasks) {
-      runTasks("appear");
+      runTasks('appear');
     },
     async onHide(runTasks) {
-      await runTasks("exit");
+      await runTasks('exit');
     },
     async onShow(runTasks) {
-      await runTasks("enter");
+      await runTasks('enter');
     },
   };
 
@@ -92,14 +98,28 @@ const SwitchTransitionTogether: FC<SwitchTransitionProps> = (props) => {
   const itemHide = useNode(children[1]);
 
   return (
-    <>
-      <CSSTransition show={show} duration={duration} appear={appear}>
-        {itemShow}
-      </CSSTransition>
+    <Content>
+      <div className="item">
+        <CSSTransition {...props}>{itemShow}</CSSTransition>
+      </div>
 
-      <CSSTransition show={!show} duration={duration} appear={appear}>
-        {itemHide}
-      </CSSTransition>
-    </>
+      <div className="item">
+        <CSSTransition {...props} show={!props.show}>
+          {itemHide}
+        </CSSTransition>
+      </div>
+    </Content>
   );
 };
+
+const Content = styled.div`
+  position: relative;
+  .item {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+`;
