@@ -6,7 +6,7 @@ group:
   order: 1.1
 ---
 
-# CSSTransition
+# Transition.CSS
 
 ### 基本使用
 

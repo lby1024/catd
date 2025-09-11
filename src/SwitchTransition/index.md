@@ -6,7 +6,7 @@ group:
   order: 1.1
 ---
 
-# SwitchTransition
+# Transition.Switch
 
 ### 同时动画
 
