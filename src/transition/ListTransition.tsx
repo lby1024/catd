@@ -15,7 +15,7 @@ export const ListTransition: FC<ListTransitionProps> = (props) => {
   const newItemsRef = useRef<ListItem[]>([]);
 
   // data变化, 触发回调函数, 获取到newData和oldData
-  useWatch((newData, oldData = []) => {
+  useWatch((newData, oldData) => {
     const { deleteOnes, newOnes } = diff(oldData, newData);
     deleteItemsRef.current = deleteOnes;
     newItemsRef.current = newOnes;
@@ -36,17 +36,17 @@ export const ListTransition: FC<ListTransitionProps> = (props) => {
         await run('enter');
       }
     },
+    onMounted(run) {
+      run('appear');
+    },
     onAppear(names) {
-      const newItems = newItemsRef.current;
-      addClassName(newItems, names, 'appear');
+      addClassName(data, names, 'appear');
     },
     onAppearActive(names) {
-      const newItems = newItemsRef.current;
-      addClassName(newItems, names, 'appear-active', false);
+      addClassName(data, names, 'appear-active', false);
     },
     onAppearDone(names) {
-      const newItems = newItemsRef.current;
-      addClassName(newItems, names, 'appear-done');
+      addClassName(data, names, 'appear-done');
     },
     onEnter(names) {
       const newItems = newItemsRef.current;

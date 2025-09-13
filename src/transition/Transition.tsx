@@ -74,10 +74,6 @@ export const Transition: FC<TransitionProps> = (props) => {
     appear && onMounted(runTasks, props);
   }, []);
 
-  useEffect(() => {
-    console.log(2222222222);
-  }, [data]);
-
   useWatch(
     () => {
       onHide(runTasks, props).then(() => {

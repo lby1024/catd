@@ -39,6 +39,8 @@ export function getNode(vnode: VNode): HTMLElement | null {
 }
 
 export function diff(oldList: ListItem[], newList: ListItem[]) {
+  oldList = oldList || [];
+  newList = newList || [];
   const oldMap = new Map(oldList.map((item) => [item.id, item]));
   const newMap = new Map(newList.map((item) => [item.id, item]));
 
