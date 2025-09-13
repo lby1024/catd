@@ -22,46 +22,10 @@ group:
 
 ### Api
 
-<table>
-  <tr>
-    <th>属性名</th>
-    <th>描述</th>
-    <th>类型</th>
-    <th>默认值</th>
-  </tr>
-
-  <tr>
-    <td>size</td>
-    <td>大小</td>
-    <td>'large' | 'small' | 'default'</td>
-    <td>default</td>
-  </tr>
-
-  <tr>
-    <td>addOnBefore</td>
-    <td>尺寸带标签的 input，设置前置标签</td>
-    <td>string | ReactElement</td>
-    <td></td>
-  </tr>
-
-  <tr>
-    <td>addOnAfter</td>
-    <td>尺寸带标签的 input，设置后置标签</td>
-    <td>string | ReactElement</td>
-    <td></td>
-  </tr>
-
-  <tr>
-    <td>prefix</td>
-    <td>带有前缀图标的 input</td>
-    <td>string | ReactElement</td>
-    <td></td>
-  </tr>
-
-  <tr>
-    <td>suffix</td>
-    <td>带有后缀图标的 input</td>
-    <td>string | ReactElement</td>
-    <td></td>
-  </tr>
-</table>
+| 属性名      | 描述                             | 类型                            | 默认值  |
+| ----------- | -------------------------------- | ------------------------------- | ------- |
+| size        | 大小                             | 'large' \| 'small' \| 'default' | default |
+| addOnBefore | 尺寸带标签的 input，设置前置标签 | string \| ReactElement          | -       |
+| addOnAfter  | 尺寸带标签的 input，设置后置标签 | string \| ReactElement          | -       |
+| prefix      | 带有前缀图标的 input             | string \| ReactElement          | -       |
+| suffix      | 带有后缀图标的 input             | string \| ReactElement          | -       |

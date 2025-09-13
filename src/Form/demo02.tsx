@@ -1,4 +1,4 @@
-import { Form, Input, Button } from 'catd';
+import { Button, Form, Input } from 'catd';
 
 const initialValues = {
   username: 'jack',
@@ -29,7 +29,12 @@ export default () => {
       initialValues={initialValues}
       style={{ width: 600 }}
     >
-      <Form.Item name="username" label="用户名" rules={rules.username} trigger="onBlur">
+      <Form.Item
+        name="username"
+        label="用户名"
+        rules={rules.username}
+        trigger="onBlur"
+      >
         <Input placeholder="username" />
       </Form.Item>
 

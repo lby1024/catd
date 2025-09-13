@@ -12,3 +12,8 @@ export type ClassNames = {
   ['appear-active']?: string;
   ['appear-done']?: string;
 };
+
+export type ListItem = {
+  id: string | number;
+  [k: string]: any;
+};

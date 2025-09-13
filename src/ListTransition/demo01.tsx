@@ -1,26 +1,54 @@
 import 'animate.css';
-import { Button, Icon, Transition } from 'catd';
+import { Button, Input, Transition } from 'catd';
 import { ClassNames } from 'catd/Transition/types';
 import { useState } from 'react';
 
 export default () => {
-  const [show, setShow] = useState(true);
+  const [data, setData] = useState([
+    { id: 0, title: 'jack' },
+    { id: 1, title: 'tom' },
+  ]);
+
+  const [v, setV] = useState('');
 
   const names: ClassNames = {
-    'enter-active': 'animate__fadeInDown',
+    'enter-active': 'animate__fadeInRight',
     'exit-active': 'animate__fadeOutDown',
   };
 
+  function add() {
+    const newOne = {
+      id: new Date().getTime(),
+      title: v,
+    };
+
+    setData([...data, newOne]);
+  }
+
+  function dele(id: number) {
+    const res = data.filter((item) => item.id !== id);
+    setData(res);
+  }
+
   return (
     <>
-      <Button btnType="primary" onClick={() => setShow(!show)}>
-        Toggle
-      </Button>
-
-      <Transition.Switch show={show} duration={800} className={names} inTurn>
-        <Icon className="animate__animated" name="file-open" size="28" />
-        <Icon className="animate__animated" name="fabulous" size="28" />
-      </Transition.Switch>
+      <Input
+        placeholder="添加..."
+        value={v}
+        onChange={(e) => setV(e.target.value)}
+        addOnAfter={<Button onClick={add}>add</Button>}
+      />
+      <Transition.List data={data} duration={800} className={names}>
+        {(item: any) => (
+          <div
+            className="animate__animated"
+            key={item.id}
+            onClick={() => dele(item.id)}
+          >
+            {item.title}
+          </div>
+        )}
+      </Transition.List>
     </>
   );
 };

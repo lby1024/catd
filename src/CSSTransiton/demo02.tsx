@@ -20,7 +20,7 @@ export default () => {
         Toggle
       </Button>
 
-      <Transition.CSS show={show} duration={1000} appear>
+      <Transition.CSS show={show} duration={1000}>
         <Hellow />
       </Transition.CSS>
     </Content>

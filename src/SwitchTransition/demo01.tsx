@@ -8,6 +8,7 @@ export default () => {
   const [show, setShow] = useState(true);
 
   const names: ClassNames = {
+    'appear-active': 'animate__heartBeat',
     'enter-active': 'animate__fadeInDown',
     'exit-active': 'animate__fadeOutDown',
   };
@@ -18,7 +19,7 @@ export default () => {
         Toggle
       </Button>
 
-      <Transition.Switch show={show} duration={1000} className={names}>
+      <Transition.Switch show={show} duration={1000} className={names} appear>
         <Icon className="animate__animated" name="file-open" size="28" />
         <Icon className="animate__animated" name="fabulous" size="28" />
       </Transition.Switch>

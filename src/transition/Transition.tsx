@@ -29,16 +29,16 @@ export type TransitionProps = {
 
 export const Transition: FC<TransitionProps> = (props) => {
   const {
-    children,
+    children: render,
     data,
     appear,
+    duration,
     onMounted = nullFn,
     onShow = nullFn,
     onHide = nullFn,
   } = props;
 
   const [value, setValue] = useState(data);
-  const getChild = children;
   const [updateTime, same] = useTime();
   const classNames = useClassNames(props);
 
@@ -56,7 +56,6 @@ export const Transition: FC<TransitionProps> = (props) => {
   const runTasks: RunTask = async (type) => {
     return new Promise((resolve) => {
       const [onWill = nullFn, onActive = nullFn, onDone = nullFn] = tasks[type];
-      const { duration } = props;
       const time = updateTime();
       const names = classNames.current;
 
@@ -72,8 +71,12 @@ export const Transition: FC<TransitionProps> = (props) => {
   };
 
   useEffect(() => {
-    onMounted(runTasks, props);
+    appear && onMounted(runTasks, props);
   }, []);
+
+  useEffect(() => {
+    console.log(2222222222);
+  }, [data]);
 
   useWatch(
     () => {
@@ -84,11 +87,11 @@ export const Transition: FC<TransitionProps> = (props) => {
         });
       });
     },
-    [data],
-    false, // false表示:页面加载完成后不会自动执行callback
+    data,
+    false, // mounted阶段不触发
   );
 
-  return <>{getChild(value)}</>;
+  return <>{render(value)}</>;
 };
 
 function useClassNames(props: TransitionProps) {

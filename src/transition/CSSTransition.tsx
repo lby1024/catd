@@ -65,15 +65,14 @@ export const CSSTransition: FC<CssTransitionProps> = (props) => {
     },
     /**
      * 加载时执行动画
+     * 判断动画是否执行
      */
     onMounted(runTasks) {
-      if (show && appear) {
+      if (show) {
         runTasks('appear');
       }
     },
-    /**
-     * 淡出
-     */
+    // 数据变化前, 是否要执行隐藏动画
     onHide(runTasks) {
       return new Promise((resolve) => {
         if (show === false) {
@@ -86,11 +85,8 @@ export const CSSTransition: FC<CssTransitionProps> = (props) => {
         }
       });
     },
-    /**
-     * 淡入
-     */
+    // 数据变化后, 是否要执行显示动画
     onShow(runTasks) {
-      console.log(show, 111111111);
       show === true && runTasks('enter');
     },
   };

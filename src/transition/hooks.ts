@@ -1,34 +1,4 @@
-import React from "react";
-import { useEffect, useRef } from "react";
-
-/**
- *
- * @param cb 回调函数
- * @param deps 依赖
- * @param auto 页面加载完成后是否自动触发
- */
-export function useWatch(cb: Function, deps: any[], auto = true) {
-  const mountedRef = useRef(false);
-
-  // 必须写在上面, 顺序很重要
-  useEffect(() => {
-    if (auto === true) {
-      cb();
-      return;
-    }
-
-    if (mountedRef.current === true) {
-      cb();
-    }
-  }, deps);
-
-  useEffect(() => {
-    mountedRef.current = true;
-    return () => {
-      mountedRef.current = false;
-    };
-  }, []);
-}
+import React, { useEffect, useRef } from 'react';
 
 export function useChild(children: any) {
   const nodeRef = useRef<HTMLElement>(null);
@@ -63,4 +33,34 @@ export function useTime() {
   }
 
   return [updateTime, sameTime] as const;
+}
+
+type DataCB<T> = (newData: T, oldData?: T) => void;
+
+export function useWatch<T>(cb: DataCB<T>, data: T, auto = true) {
+  const oldRef = useRef<T>(data);
+  const mounted = useRef(false);
+
+  useEffect(() => {
+    const newData = data;
+    const oldData = oldRef.current;
+    can() && cb(newData, oldData);
+    return () => {
+      oldRef.current = data;
+    };
+  }, [data]);
+
+  useEffect(() => {
+    mounted.current = true;
+    return () => {
+      mounted.current = false;
+    };
+  }, []);
+
+  function can() {
+    if (auto === false && mounted.current === false) {
+      return false;
+    }
+    return true;
+  }
 }

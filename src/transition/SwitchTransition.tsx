@@ -43,36 +43,30 @@ const SwitchTransitionInturn: FC<SwitchTransitionProps> = (props) => {
       const node = show ? getNode(itemHide) : getNode(itemShow);
       clear(names, node);
       node?.classList.add(names['exit']);
-      console.log(names['exit'], '------exit');
     },
     onExitActive(names) {
       const node = show ? getNode(itemHide) : getNode(itemShow);
       node?.classList.add(names['exit-active']);
-      console.log(names['exit-active'], '--------exit-active');
     },
     onExitDone(names) {
       const node = show ? getNode(itemHide) : getNode(itemShow);
       clear(names, node);
       node?.classList.add(names['exit-done']);
-      console.log(names['exit-done'], '------exit-done');
     },
     // enter
     onEnter(names) {
       const node = show ? getNode(itemShow) : getNode(itemHide);
       clear(names, node);
       node?.classList.add(names['enter']);
-      console.log(names['enter'], '--------enter');
     },
     onEnterActive(names) {
       const node = show ? getNode(itemShow) : getNode(itemHide);
       node?.classList.add(names['enter-active']);
-      console.log(names['enter-active'], '-------enter-active');
     },
     onEnterDone(names) {
       const node = show ? getNode(itemShow) : getNode(itemHide);
       clear(names, node);
       node?.classList.add(names['enter-done']);
-      console.log(names['enter-active'], '--------enter-done');
     },
     onMounted(runTasks) {
       runTasks('appear');
@@ -93,7 +87,7 @@ const SwitchTransitionInturn: FC<SwitchTransitionProps> = (props) => {
 };
 
 const SwitchTransitionTogether: FC<SwitchTransitionProps> = (props) => {
-  const { show, duration, appear, children } = props;
+  const { children } = props;
   const itemShow = useNode(children[0]);
   const itemHide = useNode(children[1]);
 

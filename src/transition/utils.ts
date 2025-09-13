@@ -1,34 +1,52 @@
-import { ClassNames } from './types';
+import { ClassNames, ListItem } from './types';
+
 export function clear(classNames: ClassNames, node?: HTMLElement | null) {
   if (!node) return;
 
-  node.classList.remove(classNames['appear']);
-  node.classList.remove(classNames['appear-active']);
-  node.classList.remove(classNames['appear-done']);
+  const classKeys: (keyof ClassNames)[] = [
+    'appear',
+    'appear-active',
+    'appear-done',
+    'enter',
+    'enter-active',
+    'enter-done',
+    'exit',
+    'exit-active',
+    'exit-done',
+  ];
 
-  node.classList.remove(classNames['enter']);
-  node.classList.remove(classNames['enter-active']);
-  node.classList.remove(classNames['enter-done']);
+  const tokens = classKeys
+    .map((key) => classNames[key])
+    .filter((v): v is string => Boolean(v));
 
-  node.classList.remove(classNames['exit']);
-  node.classList.remove(classNames['exit-active']);
-  node.classList.remove(classNames['exit-done']);
+  if (tokens.length) {
+    node.classList.remove(...tokens);
+  }
 }
 
 export function nullFn() {}
 
-export function sleep(delay = 1000) {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(true);
-    }, delay);
-  });
+export function sleep(delay = 1000): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, delay));
 }
 
 type VNode = React.FunctionComponentElement<{
   ref: React.RefObject<HTMLElement>;
 }>;
 
-export function getNode(vnode: VNode) {
-  return vnode.ref?.current;
+export function getNode(vnode: VNode): HTMLElement | null {
+  return vnode.ref?.current ?? null;
+}
+
+export function diff(oldList: ListItem[], newList: ListItem[]) {
+  const oldMap = new Map(oldList.map((item) => [item.id, item]));
+  const newMap = new Map(newList.map((item) => [item.id, item]));
+
+  // 找出新增的项目
+  const newOnes = newList.filter((item) => !oldMap.has(item.id));
+
+  // 找出被删除的项目
+  const deleteOnes = oldList.filter((item) => !newMap.has(item.id));
+
+  return { newOnes, deleteOnes };
 }
