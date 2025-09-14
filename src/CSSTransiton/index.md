@@ -12,7 +12,7 @@ group:
 
 <code  src="./demo01"></code>
 
-### 配合组件使用
+### 初始动画
 
 <code  src="./demo02"></code>
 

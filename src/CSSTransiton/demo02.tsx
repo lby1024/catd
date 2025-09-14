@@ -6,7 +6,7 @@ const Hellow = React.forwardRef<any>((props, ref) => {
   return (
     <i ref={ref}>
       <Icon name="camera" size="24" />
-      <Icon name="chart-bar" size="24" />
+      <i>hellow world</i>
     </i>
   );
 });
@@ -20,7 +20,7 @@ export default () => {
         Toggle
       </Button>
 
-      <Transition.CSS show={show} duration={1000}>
+      <Transition.CSS show={show} duration={1000} appear>
         <Hellow />
       </Transition.CSS>
     </Content>
@@ -28,11 +28,18 @@ export default () => {
 };
 
 const Content = styled.div`
+  i {
+    font-size: 24px;
+    display: inline-block;
+    padding: 0px 12px;
+  }
+
+  .appear,
   .enter {
     opacity: 0;
     transform: translateX(-10%);
   }
-
+  .appear-active,
   .enter-active {
     opacity: 1;
     transform: translateX(0);
@@ -43,7 +50,6 @@ const Content = styled.div`
     opacity: 1;
     transform: translateX(0);
   }
-
   .exit-active {
     opacity: 0;
     transform: translateX(10%);
