@@ -1,5 +1,10 @@
 import classNames from 'classnames';
-import { forwardRef, InputHTMLAttributes, ReactElement } from 'react';
+import {
+  forwardRef,
+  InputHTMLAttributes,
+  MouseEventHandler,
+  ReactElement,
+} from 'react';
 import './index.css';
 
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
@@ -10,22 +15,43 @@ export interface InputProps extends Omit<NativeInputProps, 'size' | 'prefix'> {
   addOnAfter?: string | ReactElement;
   prefix?: string | ReactElement;
   suffix?: string | ReactElement;
+  onAfterClick?: MouseEventHandler<HTMLSpanElement> | undefined;
 }
 
 const Input = forwardRef<HTMLElement, InputProps>((props, ref) => {
-  const { className, size, addOnBefore, addOnAfter, suffix, prefix, style, onClick, ...others } = props;
+  const {
+    className,
+    size,
+    addOnBefore,
+    addOnAfter,
+    suffix,
+    prefix,
+    style,
+    onAfterClick,
+    ...others
+  } = props;
 
   const clas = classNames('cat-input', className, {
     [`cat-input-${size}`]: size,
   });
 
-  const Before = <span className="cat-input-label cat-input-before">{addOnBefore}</span>;
-  const After = <span className="cat-input-label cat-input-after">{addOnAfter}</span>;
-  const Prefix = <span className="cat-input-fix cat-input-prefix">{prefix}</span>;
-  const Suffix = <span className="cat-input-fix cat-input-suffix">{suffix}</span>;
+  const Before = (
+    <span className="cat-input-label cat-input-before">{addOnBefore}</span>
+  );
+  const After = (
+    <span onClick={onAfterClick} className="cat-input-label cat-input-after">
+      {addOnAfter}
+    </span>
+  );
+  const Prefix = (
+    <span className="cat-input-fix cat-input-prefix">{prefix}</span>
+  );
+  const Suffix = (
+    <span className="cat-input-fix cat-input-suffix">{suffix}</span>
+  );
 
   return (
-    <span className={clas} style={style} ref={ref} onClick={onClick}>
+    <span className={clas} style={style} ref={ref}>
       {addOnBefore && Before}
       <span className="cat-input-mid">
         {prefix && Prefix}

@@ -46,6 +46,9 @@
 .cat-input-after {
   border-left: 1px solid var(--gray);
 }
+.cat-input-after:hover {
+  cursor: pointer;
+}
 
 .cat-input-mid {
   flex: auto;

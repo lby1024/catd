@@ -17,7 +17,8 @@ group:
 <code src='./demo02.tsx'></code>
 
 ### 最大行最小行
-最小3行, 最大7行
+
+最小 3 行, 最大 7 行
 <code src='./demo03.tsx'></code>
 
 ### Api

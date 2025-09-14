@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { FC, ReactElement } from 'react';
+import { FC, ReactElement } from 'react';
 import Popup from '../Popup';
 import './index.css';
 
@@ -16,7 +16,7 @@ interface TooltipProps {
 }
 
 const Tooltip: FC<TooltipProps> = (props) => {
-  const { placement, children, text } = props;
+  const { placement = 'top', children, text } = props;
   const tipClass = classNames('cat-tooltip', {
     [`cat-tooltip-${placement}`]: placement,
   });
@@ -33,10 +33,6 @@ const Tooltip: FC<TooltipProps> = (props) => {
       {children}
     </Popup>
   );
-};
-
-Tooltip.defaultProps = {
-  placement: 'top',
 };
 
 export default Tooltip;

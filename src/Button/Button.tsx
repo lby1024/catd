@@ -1,6 +1,6 @@
-import {Icon} from '../index';
 import classNames from 'classnames';
 import React, { forwardRef } from 'react';
+import { Icon } from '../index';
 import './index.css';
 
 type nativeProps = React.ButtonHTMLAttributes<HTMLElement> &
@@ -14,19 +14,20 @@ interface ButtonProps extends Partial<nativeProps> {
   loading?: boolean;
 }
 
-type ButtonExp = HTMLButtonElement & HTMLAnchorElement
+type ButtonExp = HTMLButtonElement & HTMLAnchorElement;
 
 const Button = forwardRef<ButtonExp, ButtonProps>((props, ref) => {
   const {
     className,
-    btnType,
+    btnType = 'default',
     children,
     href,
-    size='md',
+    size = 'md',
     disabled = false,
     loading = false,
     onClick,
-    ...others } = props;
+    ...others
+  } = props;
 
   const clas = classNames('cat-button', {
     [`cat-btn-${btnType}`]: btnType,
@@ -36,44 +37,40 @@ const Button = forwardRef<ButtonExp, ButtonProps>((props, ref) => {
   });
 
   function click(e: React.MouseEvent<HTMLElement, MouseEvent>) {
-    if(disabled) return
-    if(loading) return
-    if(onClick) onClick(e)
+    if (disabled) return;
+    if (loading) return;
+    if (onClick) onClick(e);
   }
 
   const config = {
     className: clas,
     onClick: click,
     ref,
-    ...others
-  }
+    ...others,
+  };
 
+  const iconSize = size === 'lg' ? '21' : size === 'sm' ? '13' : '16';
 
-  const iconSize =
-    size === 'lg' ? '21' :
-    size === 'sm' ? '13' : '16'
-
-  const Loading = loading ? <Icon name='loading' className='cat-loading' size={iconSize}  />: null
+  const Loading = loading ? (
+    <Icon name="loading" className="cat-loading" size={iconSize} />
+  ) : null;
 
   if (btnType === 'link') {
     return (
-      <a href={disabled ? undefined : href} {...config} >
-        {children}{Loading}
+      <a href={disabled ? undefined : href} {...config}>
+        {children}
+        {Loading}
       </a>
     );
   }
 
   return (
     // eslint-disable-next-line react/button-has-type
-    <button disabled={disabled} {...config} >
-      {children}{Loading}
+    <button disabled={disabled} {...config}>
+      {children}
+      {Loading}
     </button>
   );
 });
-
-Button.defaultProps = {
-  disabled: false,
-  btnType: 'default',
-};
 
 export default Button;

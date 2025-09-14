@@ -1,7 +1,7 @@
 import classNames from 'classnames';
-import React, { CSSProperties, FC, useState } from 'react';
-import './index.css';
+import React, { CSSProperties, useState } from 'react';
 import './iconfont.js';
+import './index.css';
 
 type nativeProps = React.SVGAttributes<SVGSVGElement>;
 export interface IconProps extends Partial<nativeProps> {
@@ -12,8 +12,15 @@ export interface IconProps extends Partial<nativeProps> {
   hoverColor?: string;
 }
 
-const Icon: FC<IconProps> = (props) => {
-  const { className, name, size, color, hoverColor, ...others } = props;
+const Icon = React.forwardRef<SVGSVGElement, IconProps>((props, ref) => {
+  const {
+    className,
+    name,
+    size = '1em',
+    color = 'currentColor',
+    hoverColor,
+    ...others
+  } = props;
   const clas = classNames('cat-icon', className, {});
   const [fill, setFill] = useState(color);
 
@@ -32,13 +39,14 @@ const Icon: FC<IconProps> = (props) => {
 
   function onMouseLeave(e: any) {
     if (color) setFill(color);
-    if (others.onMouseEnter) {
-      others?.onMouseEnter(e);
+    if (others.onMouseLeave) {
+      others?.onMouseLeave(e);
     }
   }
 
   return (
     <svg
+      ref={ref}
       className={clas}
       aria-hidden="true" // 无障碍相关: 图标属于装饰性类容,不需要读出来
       {...others}
@@ -49,9 +57,6 @@ const Icon: FC<IconProps> = (props) => {
       <use xlinkHref={`#icon-${name}`}></use>
     </svg>
   );
-};
-Icon.defaultProps = {
-  color: 'currentColor',
-  size: '1em',
-};
+});
+
 export default Icon;
